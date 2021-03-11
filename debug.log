@@ -1,0 +1,7 @@
+[1010/182913.474:ERROR:settings.cc(430)] Settings version is not 5
+[1010/183913.701:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\adama\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\5e60f178-9aac-49b0-84d1-e34dede4f20f: Le chemin d’accès spécifié est introuvable. (0x3)
+[1010/183913.708:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\adama\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\cc2ee0ec-a951-4ee2-8444-9a68ac927de2: Le chemin d’accès spécifié est introuvable. (0x3)
+[1010/183913.710:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\adama\AppData\Local\Microsoft\Edge\User Data\Crashpad\attachments\d8a66963-bb93-4a4c-bbae-067e37611e4c: Le chemin d’accès spécifié est introuvable. (0x3)
+[1010/183913.710:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1011/150734.134:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
+[1020/164641.127:ERROR:directory_reader_win.cc(43)] FindFirstFile: Le chemin d’accès spécifié est introuvable. (0x3)
