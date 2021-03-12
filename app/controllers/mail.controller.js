@@ -66,7 +66,7 @@ exports.sendAnEMail  = (req, res)=> {
 
 var api_key = process.env.API_KEY; 
 var domain_name = process.env.DOMAINE_NAME;  
-const mg = new Mailgun({apiKey: api_key, domain: domain_name});
+var mg = new Mailgun({apiKey: api_key, domain: domain_name});
 
 
 const mailoptions = {
