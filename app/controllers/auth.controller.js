@@ -1,3 +1,4 @@
+require('dotenv').config();
 const db = require("../models");
 const config = require("../config/auth.config");
 const Validator = require("validator");
@@ -10,7 +11,6 @@ var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 var nodemailer = require("nodemailer");
 const mailgun = require("mailgun-js");
-require('dotenv').config();
 
 
 

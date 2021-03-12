@@ -1,8 +1,9 @@
+require('dotenv').config();
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 var nodemailer = require("nodemailer");
 const mailgun = require("mailgun-js");
-require('dotenv').config();
+
 
 
 //input validation
