@@ -368,8 +368,8 @@ exports.sendLinkByEmail = (req, res) =>{
       email: req.body.email
     }
   }).then(userData=>{
-    if(userData){
-      return res.status(400).json({ message: "l'utilisateur existe déjà!" });
+    if(!userData){
+      return res.status(400).json({ message: "l'utilisateur n'existe pas!" });
     }
 
         var api_key = process.env.API_KEY; 
