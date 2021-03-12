@@ -75,13 +75,7 @@ const mailoptions = {
   from: '<'+ req.body.email +'>',
   to: 'ratkhamamada@gmail.com',
   subject: req.body.mailSubject,
-  html: "<h2> From Key Service website ! </h2><p>\
-            <h3>bureau: "+req.body.bureau+"</h3>\
-            <h3>Nom: "+req.body.firstname+"</h3>\
-            <h3>Telephone: "+req.body.telephone+"</h3>\
-            </p>\
-            <p>"+req.body.mailContent+"</p>\
-            "
+  html: 'Hello, This is not a plain-text email, I wanted to test some spicy Mailgun sauce in NodeJS! <a href="http://0.0.0.0:3030/validate?' + req.params.mail + '">Click here to add your email address to a mailing list</a>'
 };
 
 mg.messages().send(mailoptions, function (error, info) {
