@@ -77,7 +77,7 @@ require('./app/routes/simulation.routes')(app);
 
 global.__basedir = __dirname;
 
- 
+console.log("MY_VARIABLE: " + process.env.API_KEY);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running.`);
