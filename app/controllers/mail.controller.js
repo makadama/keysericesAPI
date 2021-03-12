@@ -2,7 +2,7 @@ require('dotenv').config();
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 var nodemailer = require("nodemailer");
-const Mailgun = require("mailgun-js");
+const mailgun = require("mailgun-js");
 
 
 
@@ -67,7 +67,8 @@ exports.sendAnEMail  = (req, res)=> {
 
 var api_key = process.env.API_KEY; 
 var domain_name = process.env.DOMAINE_NAME;  
-var mg = new Mailgun({apiKey: api_key, domain: domain_name});
+const mg = mailgun({apiKey: api_key, domain: domain_name, host: process.env.HOST_N});
+
 
 
 const mailoptions = {
