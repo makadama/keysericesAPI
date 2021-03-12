@@ -363,17 +363,13 @@ exports.getCurrentUser = (req, res) => {
 
 
 exports.sendLinkByEmail = (req, res) =>{
-  const { errors, isValid } = validateforgetInput(req.body);
-  if(!isValid){
-      return res.status(400).json(errors);
-  } 
- User.findOne({
+  User.findOne({
     where: {
       email: req.body.email
     }
   }).then(userData=>{
-    if(!userData){
-      return res.status(400).json({ message: "adresse email introuvable!" });
+    if(userData){
+      return res.status(400).json({ message: "l'utilisateur existe déjà!" });
     }
 
         var api_key = process.env.API_KEY; 
@@ -417,5 +413,6 @@ exports.sendLinkByEmail = (req, res) =>{
 
 
   })
+
 
 }
