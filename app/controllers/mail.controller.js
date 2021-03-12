@@ -1,9 +1,8 @@
-require('dotenv').config();
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 var nodemailer = require("nodemailer");
 const Mailgun = require("mailgun-js");
-
+require('dotenv').config();
 
 
 //input validation
@@ -65,17 +64,22 @@ exports.sendAnEMail  = (req, res)=> {
       return res.status(400).json(errors);
   } 
 
-var api_key = process.env.API_KEY;
+var api_key = process.env.API_KEY; 
 var domain_name = process.env.DOMAINE_NAME;  
 const mg = new Mailgun({apiKey: api_key, domain: domain_name});
-
 
 
 const mailoptions = {
   from: '<'+ req.body.email +'>',
   to: 'ratkhamamada@gmail.com',
   subject: req.body.mailSubject,
-  html: 'Hello, This is not a plain-text email, I wanted to test some spicy Mailgun sauce in NodeJS! <a href="http://0.0.0.0:3030/validate?' + req.params.mail + '">Click here to add your email address to a mailing list</a>'
+  html: "<h2> From Key Service website ! </h2><p>\
+            <h3>bureau: "+req.body.bureau+"</h3>\
+            <h3>Nom: "+req.body.firstname+"</h3>\
+            <h3>Telephone: "+req.body.telephone+"</h3>\
+            </p>\
+            <p>"+req.body.mailContent+"</p>\
+            "
 };
 
 mg.messages().send(mailoptions, function (error, info) {

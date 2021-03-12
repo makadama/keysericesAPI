@@ -363,7 +363,7 @@ exports.getCurrentUser = (req, res) => {
 
 
 exports.sendLinkByEmail = (req, res) =>{
-  const { errors, isValid } = validateRegisterInput(req.body);
+  const { errors, isValid } = validateforgetInput(req.body);
   if(!isValid){
       return res.status(400).json(errors);
   } 
