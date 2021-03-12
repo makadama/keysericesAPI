@@ -7,7 +7,7 @@ const jwtdecode = require("jwt-decode");
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 var bcrypt = require("bcryptjs");
-require('dotenv').config();
+const mailgun = require("mailgun-js");
 
 
 function validateUpdateInput(data) {
