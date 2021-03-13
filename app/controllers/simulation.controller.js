@@ -32,78 +32,78 @@ function validateContactInput(data) {
 
   // firstName checks
   if (Validator.isEmpty(data.firstname)) {
-    errors.firstname = "firstname field is required";
+    errors.firstname = "ce champ est requis";
   }
 // Email checks
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "l'adresse email est invalide";
   }  
   // telephone checks
   if (Validator.isEmpty(data.telephone)) {
-    errors.telephone = "telephone field is required";
+    errors.telephone = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.ville)) {
-    errors.ville = "ville field is required";
+    errors.ville = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.adresse)) {
-    errors.adresse = "adresse field is required";
+    errors.adresse = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.codePostal)) {
-    errors.codePostal = "codePostal field is required";
+    errors.codePostal = "ce champ est requis";
   }
 
  if (Validator.isEmpty(data.surface)) {
-    errors.surface = "surface field is required";
+    errors.surface = "ce champ est requis";
   }
 
  if (Validator.isEmpty(data.capacite)) {
-    errors.capacite = "capacite field is required";
+    errors.capacite = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.nbChambre)) {
-    errors.nbChambre = "nbChambre field is required";
+    errors.nbChambre = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.nbLit)) {
-    errors.nbLit = "nbLit field is required";
+    errors.nbLit = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.nbSDB)) {
-    errors.nbSDB = "nbSDB field is required";
+    errors.nbSDB = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.etage)) {
-    errors.etage = "etage field is required";
+    errors.etage = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.dateDispo)) {
-    errors.dateDispo = "dateDispo field is required";
+    errors.dateDispo = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.duree)) {
-    errors.duree = "duree field is required";
+    errors.duree = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.occupation)) {
-    errors.occupation = "occupation field is required";
+    errors.occupation = "ce champ est requis";
   }
 
    if (Validator.isEmpty(data.equipement)) {
-    errors.equipement = "equipement field is required";
+    errors.equipement = "ce champ est requis";
   }
 
  
  if (Validator.isEmpty(data.tarif)) {
-    errors.tarif = "description field is required";
+    errors.tarif = "ce champ est requis";
   }
 
   if (Validator.isEmpty(data.type)) {
-    errors.type = "description field is required";
+    errors.type = "ce champ est requis";
   }
  
  

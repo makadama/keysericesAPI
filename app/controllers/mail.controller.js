@@ -20,34 +20,34 @@ function validateContactInput(data) {
 
  //Bureau checks
  if (Validator.isEmpty(data.bureau)) {
-    errors.bureau = "bureau field is required";
+    errors.bureau = "ce champ est requis";
   }
 
   //MailSubject
   if (Validator.isEmpty(data.mailSubject)) {
-    errors.mailSubject = "subject field is required";
+    errors.mailSubject = "ce champ est requis";
   }
 
   // firstName checks
   if (Validator.isEmpty(data.firstname)) {
-    errors.firstname = "firstname field is required";
+    errors.firstname = "ce champ est requis";
   }
 
 // Email checks
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "adresse email invalide";
   }  
   
   // telephone checks
   if (Validator.isEmpty(data.telephone)) {
-    errors.telephone = "telephone field is required";
+    errors.telephone = "ce champ est requis";
   }
 
   // mailContent checks
   if (Validator.isEmpty(data.mailContent)) {
-    errors.mailContent = "message field is required";
+    errors.mailContent = "ce champ est requis";
   }
  
 

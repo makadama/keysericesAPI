@@ -18,7 +18,7 @@ exports.getOne = (req, res) => {
   })
   .then(message => {
       if (!message) {
-        return res.status(404).send({ message: "Message Not found." });
+        return res.status(404).send({ message: "Message introuvable" });
       }
   res.status(200).send({
           id: message.id,
@@ -52,7 +52,7 @@ exports.updateOne = (req, res) => {
   })
   .then(message => {
       if (!message) {
-        return res.status(404).send({ message: "Message Not found." });
+        return res.status(404).send({ message: "Message introuvable." });
       }
       
       message.update({

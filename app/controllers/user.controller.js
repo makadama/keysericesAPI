@@ -23,17 +23,17 @@ function validateUpdateInput(data) {
   
 // Email checks
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "l'adresse email est invalide";
   }  
   // firstName checks
   if (Validator.isEmpty(data.firstname)) {
-    errors.firstname = "firstname field is required";
+    errors.firstname = "ce champ est requis";
   }
    // lastName checks
   if (Validator.isEmpty(data.lastname)) {
-    errors.lastname = "lastname field is required";
+    errors.lastname = "ce champ est requis";
   }
   // type checks
   /*if (Validator.isEmpty(data.type)) {
@@ -41,11 +41,11 @@ function validateUpdateInput(data) {
   }*/
   // adress checks
   if (Validator.isEmpty(data.adress)) {
-    errors.adress = "adresse field is required";
+    errors.adress = "ce champ est requis";
   }
   // telephone checks
   if (Validator.isEmpty(data.telephone)) {
-    errors.telephone = "telephone field is required";
+    errors.telephone = "ce champ est requis";
   }
  
 
@@ -72,17 +72,17 @@ function validateRegisterInput(data) {
 
 // Email checks
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "l'email est invalide";
   }  
   // firstName checks
   if (Validator.isEmpty(data.firstname)) {
-    errors.firstname = "firstname field is required";
+    errors.firstname = "ce champ est requis";
   } 
    // lastName checks
   if (Validator.isEmpty(data.lastname)) {
-    errors.lastname = "lastname field is required";
+    errors.lastname = "ce champ est requis";
   }
   // type checks
   /*if (Validator.isEmpty(data.type)) {
@@ -90,25 +90,25 @@ function validateRegisterInput(data) {
   }*/
   // adress checks
   if (Validator.isEmpty(data.adress)) {
-    errors.adress = "adresse field is required";
+    errors.adress = "ce champ est requis";
   }
   // telephone checks
   if (Validator.isEmpty(data.telephone)) {
-    errors.telephone = "telephone field is required";
+    errors.telephone = "ce champ est requis";
   }
  
 // Password checks
 if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.password = "ce champ est requis";
   }
 if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Confirm password field is required";
+    errors.password2 = "ce champ est requis";
   }
 if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Password must be at least 6 characters";
+    errors.password = "le mot de passe doit avoir au moins 6 caractères";
   }
 if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = "Passwords must match";
+    errors.password2 = "mots de passe non identiques";
   }
 return {
     errors,
@@ -137,7 +137,7 @@ exports.getOne = (req, res) => {
   })
   .then(user => {
       if (!user) {
-        return res.status(404).send({ user: "User Not found." });
+        return res.status(404).send({ user: "utilisateur introuvable" });
       }
   res.status(200).send({
           id: user.id,
@@ -180,7 +180,7 @@ exports.createNewOne = (req, res) => {
   // Save User to Database
   User.findOne({where:{email: req.body.email} }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({ email: "l'email existe déja" });
     }
     else{
       if(!(req.body.type)){
@@ -230,7 +230,7 @@ exports.updateOne = (req, res) => {
   }  
   if(req.body.password && req.body.password2 && req.body.password3){
       if (!Validator.isLength(req.body.password2, { min: 6, max: 30 })) {
-        return res.status(404).send({message: "Password must be at least 6 characters"});
+        return res.status(404).send({message: "le mot de passe doit avoir au moins 6 caractères"});
       }
       if (!Validator.equals(req.body.password2, req.body.password3)) {
         return res.status(404).send({message: "les mots de passes ne correspondent pas!"});
@@ -242,7 +242,7 @@ exports.updateOne = (req, res) => {
   })
   .then(user => {
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).send({ message: "utilisateur introuvable." });
       }
 
        var passwordIsValid = bcrypt.compareSync(
@@ -271,7 +271,7 @@ exports.updateOne = (req, res) => {
             }
          }).then(userUpdated => {
             if (!userUpdated) {
-              return res.status(404).send({ message: "user  Not found." });
+              return res.status(404).send({ message: "l'utilisateur est introuvable." });
             }
        return res.status(200).send(userUpdated);
          });
@@ -293,7 +293,7 @@ else{
   })
   .then(user => {
       if (!user) {
-        return res.status(404).send({ user: "User Not found." });
+        return res.status(404).send({ user: "utilisateur introuvable." });
       }
       
       User.update({
@@ -312,7 +312,7 @@ else{
             }
          }).then(userUpdated => {
             if (!userUpdated) {
-              return res.status(404).send({ message: "user  Not found." });
+              return res.status(404).send({ message: "utilisateur introuvable." });
             }
         res.status(200).send(userUpdated);
          });
@@ -386,10 +386,10 @@ exports.sendLinkByEmail = (req, res) =>{
             // text: 'That was easy!',
             html: "<h1> Key Service ! </h1><p>\
             <h3>Bonjour "+userData.firstname+"</h3>\
-            <p>Votre compte key services a été créer</p>\
-            <p>votre email est"+userData.email+"<p>\
+            <p>Votre compte key services a été créé</p>\
+            <p>votre email est "+userData.email+"<p>\
             veuillez cliquer sur le lien ci-dessous pour changer votre mot de passe!<br/>\
-            <a href='http://www.f2i-cw22-ams.fr/changer-mot-de-passe/"+currentDateTime+"+++"+userData.email+"'>Click On This Link</a>\
+            <a href='http://www.f2i-cw22-ams.fr/changer-mot-de-passe/"+currentDateTime+"+++"+userData.email+"'>Cliquer ici</a>\
             </p>"
         };
 

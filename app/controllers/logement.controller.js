@@ -21,30 +21,30 @@ function validateLogementInput(data) {
  
 
   if (Validator.isEmpty(data.fk_ville)) {
-    errors.fk_ville = "ville field is required";
+    errors.fk_ville = "ce champ est requis";
   }
    
   if (Validator.isEmpty(data.adresse)) {
-    errors.adresse = "adresse field is required";
+    errors.adresse = "ce champ est requis";
   }
   
   if (Validator.isEmpty(data.code_postal)) {
-    errors.code_postal = "code postal field is required";
+    errors.code_postal = "ce champ est requis";
   }
 
   if (Validator.isEmpty(data.type)) {
-    errors.type = "type field is required";
+    errors.type = "ce champ est requis";
   }
 
   if (Validator.isEmpty(data.superficie )) {
-    errors.superficie  = "superficie field is required";
+    errors.superficie  = "ce champ est requis";
   }
   
 if (Validator.isEmpty(data.nb_lits)) {
-    errors.nb_lits = "nombre de lits field is required";
+    errors.nb_lits = "ce champ est requis";
   }
 if (Validator.isEmpty(data.nb_sdb)) {
-    errors.nb_sdb = "nombre de salle de bain  field is required";
+    errors.nb_sdb = "ce champ est requis";
   }
 return {
     errors,
@@ -69,11 +69,11 @@ function validateUpdateInput(data) {
 
   // firstName checks
   if (Validator.isEmpty(data.fk_ville)) {
-    errors.fk_ville = "fk_ville field is required";
+    errors.fk_ville = "ce champ est requis";
   }
    // lastName checks
   if (Validator.isEmpty(data.adresse)) {
-    errors.adresse = "adresse field is required";
+    errors.adresse = "ce champ est requis";
   }
   // type checks
   /*if (Validator.isEmpty(data.type)) {
@@ -81,22 +81,22 @@ function validateUpdateInput(data) {
   }*/
   // adress checks
   if (Validator.isEmpty(data.type)) {
-    errors.type = "typee field is required";
+    errors.type = "ce champ est requis";
   }
   // telephone checks
   if (Validator.isEmpty(data.code_postal)) {
-    errors.code_postal = "code_postal field is required";
+    errors.code_postal = "ce champ est requis";
   }
  
 // Password checks
 if (Validator.isEmpty(data.superficie)) {
-    errors.superficie = "superficie field is required";
+    errors.superficie = "ce champ est requis";
   }
 if (Validator.isEmpty(data.nb_lits)) {
-    errors.nb_lits = "nb_lits field is required";
+    errors.nb_lits = "ce champ est requis";
   }
   if (Validator.isEmpty(data.nb_sdb)) {
-    errors.nb_sdb = "nb_sdb field is required";
+    errors.nb_sdb = "ce champ est requis";
   }
 
 return {
@@ -121,7 +121,7 @@ exports.getOne = (req, res) => {
   })
   .then(logement => {
       if (!logement) {
-        return res.status(404).send({ message: "Logement Not found." });
+        return res.status(404).send({ message: "Logement introuvable." });
       }
   res.status(200).send(logement);
    });
@@ -188,7 +188,7 @@ exports.updateOne = (req, res) => {
   })
   .then(logement => {
       if (!logement) {
-        return res.status(404).send({ message: "Logement Not found." });
+        return res.status(404).send({ message: "Logement introuvable." });
       }
       Logement.update({
           fk_ville: parseInt(req.body.fk_ville),
@@ -213,7 +213,7 @@ exports.updateOne = (req, res) => {
             }
          }).then(bien => {
             if (!bien) {
-              return res.status(404).send({ message: "Logement Not found." });
+              return res.status(404).send({ message: "Logement introuvable." });
             }
         res.status(200).send(bien);
          });

@@ -28,7 +28,7 @@ exports.getOne = (req, res) => {
   })
   .then(disponibilite => {
       if (!disponibilite) {
-        return res.status(404).send({ message: "Disponibilite Not found." });
+        return res.status(404).send({ message: "Disponibilite introuvable." });
       }
   res.status(200).send({
           id: disponibilite.id,
@@ -88,7 +88,7 @@ exports.updateOne = (req, res) => {
   })
   .then(disponibilite => {
       if (!disponibilite) {
-        return res.status(404).send({ message: "Disponibilite Not found." });
+        return res.status(404).send({ message: "Disponibilite introuvable." });
       }
       
       disponibilite.update({

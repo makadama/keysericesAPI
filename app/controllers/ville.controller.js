@@ -18,7 +18,7 @@ exports.getOne = (req, res) => {
   })
   .then(ville => {
       if (!ville) {
-        return res.status(404).send({ message: "Ville Not found." });
+        return res.status(404).send({ message: "Ville introuvable." });
       }
   res.status(200).send({
           id: ville.id,

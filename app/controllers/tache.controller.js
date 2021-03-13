@@ -15,10 +15,10 @@ function validateAddedTaskInput(data) {
   data.fk_logement = !isEmpty(data.fk_logement.toString()) ? data.fk_logement.toString() : ""; 
  
   if (Validator.isEmpty(data.libelle)) {
-    errors.libelle = "firstname field is required";
+    errors.libelle = "ce champ est requis";
   }
   if (Validator.isEmpty(data.fk_logement)) {
-    errors.fk_logement = "fk_voyageur field is required";
+    errors.fk_logement = "ce champ est requis";
   }
 return {
     errors,

@@ -30,17 +30,17 @@ function validateRegisterInput(data) {
 
 // Email checks
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "l'email est invalide";
   }  
   // firstName checks
   if (Validator.isEmpty(data.firstname)) {
-    errors.firstname = "firstname field is required";
+    errors.firstname = "ce champ est requis";
   }
    // lastName checks
   if (Validator.isEmpty(data.lastname)) {
-    errors.lastname = "lastname field is required";
+    errors.lastname = "ce champ est requis";
   }
   // type checks
   /*if (Validator.isEmpty(data.type)) {
@@ -48,25 +48,25 @@ function validateRegisterInput(data) {
   }*/
   // adress checks
   if (Validator.isEmpty(data.adress)) {
-    errors.adress = "adresse field is required";
+    errors.adress = "ce champ est requis";
   }
   // telephone checks
   if (Validator.isEmpty(data.telephone)) {
-    errors.telephone = "telephone field is required";
+    errors.telephone = "ce champ est requis";
   }
  
 // Password checks
 if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.password = "ce champ est requis";
   }
 if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Confirm password field is required";
+    errors.password2 = "ce champ est requis";
   }
 if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Password must be at least 6 characters";
+    errors.password = "le mot de passe doit avoir au moins 6 caractères";
   }
 if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = "Passwords must match";
+    errors.password2 = "mots de passes non identiques";
   }
 return {
     errors,
@@ -85,13 +85,13 @@ function validateLoginInput(data) {
   data.password = !isEmpty(data.password) ? data.password : "";
 // Email checks
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "l'email est invalide";
   }  
 // Password checks
  if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.password = "ce champ est requis";
   }
 return {
     errors,
@@ -105,9 +105,9 @@ function validateforgetInput(data) {
 // Convert empty fields to an empty string so we can use validator functions
   data.email = !isEmpty(data.email) ? data.email : "";
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required";
+    errors.email = "ce champ est requis";
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid";
+    errors.email = "l'email est invalide";
   }  
 return {
     errors,
@@ -121,16 +121,16 @@ function validateresetInput(data) {
 data.password = !isEmpty(data.password) ? data.password : "";
 data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 if (Validator.isEmpty(data.password)) {
-    errors.password = "Password field is required";
+    errors.password = "ce champ est requis";
   }
 if (Validator.isEmpty(data.password2)) {
-    errors.password2 = "Confirm password field is required";
+    errors.password2 = "ce champ est requis";
   }
 if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-    errors.password = "Password must be at least 6 characters";
+    errors.password = "le mot de passe doit être au moins 6 caractères";
   }
 if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = "Passwords must match";
+    errors.password2 = "mots de passe non identiques";
   }
 return {
     errors,
@@ -148,7 +148,7 @@ exports.signup = (req, res) => {
   // Save User to Database
   User.findOne({where:{email: req.body.email} }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "Email already exists" });
+      return res.status(400).json({ email: "cet adresse existe déja" });
     }
     else{
       if(!(req.body.type)){
@@ -217,7 +217,7 @@ exports.signin = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
-          message: "Invalid Password!"
+          message: "mot de passe non valide!"
         });
       }
 
@@ -384,7 +384,7 @@ exports.signinEmploye = (req, res) => {
       if (!passwordIsValid) {
         return res.status(401).send({
           token: null,
-          message: "Invalid Password!"
+          message: "mot de passe invalide!"
         });
       }
 
