@@ -3,6 +3,7 @@ const config = require("../config/auth.config");
 const Annonce = db.annonce;
 const User = db.user;
 const Logement = db.logement;
+const Disponibilite = db.disponibilite
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 
@@ -67,11 +68,33 @@ exports.createOne = (req, res) => {
   if(req.body.date_debut>=req.body.date_fin){
          return res.status(404).send({ message: "Dates invalides!" });
     }
-     User.findOne({
-      where: {
-        id: req.body.fk_voyageur
+     Disponibilite.findAll({where:{fk_logement: req.body.fk_logement}})
+    .then(resultDispo=>{
+       if(!resultDispo){
+        return res.status(404).send({ message: "Aucune disponibilite n'a été défini pour ce logement." });
+       }
+       else{
+        let tableau = [];
+        for(let i=0; i<resultDispo.length; i++){
+        if(req.body.date_debut<resultDispo[i].date_fin && req.body.date_debut>=resultDispo[i].date_debut && req.body.date_fin<=resultDispo[i].date_fin && req.body.date_fin>resultDispo[i].date_debut){
+          tableau.push('louable')
+        }
+        else{
+          tableau.push('non_louable')
+        }
       }
-    }).then(user =>{
+
+      if(tableau.includes('non_louable')){
+
+          return res.status(404).send({ message: "ce logement n'est pas disponible en ces périodes " });
+      }
+      else{
+
+           User.findOne({
+              where: {
+                id: req.body.fk_voyageur
+              }
+            }).then(user =>{
       if(!user){
          return res.status(404).send({ message: "ce voyageur n'existe pas!" });
       }
@@ -90,7 +113,7 @@ exports.createOne = (req, res) => {
           }
 
           let tab = [];
-  Annonce.findAll({where:{fk_logement: req.body.fk_logement}})
+    Annonce.findAll({where:{fk_logement: req.body.fk_logement}})
     .then(result=>{
       
       for(let i=0; i<result.length; i++){
@@ -129,9 +152,11 @@ exports.createOne = (req, res) => {
     }).catch(err => {
                     res.status(500).send({ message: err.message });
       })
-
-  
-
+      }
+       }
+    }).catch(err => {
+                    res.status(500).send({ message: err.message });
+      })
              
 };
 
