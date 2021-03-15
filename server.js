@@ -8,26 +8,12 @@ const cors = require("cors");
 
 const app = express();
 var nodemailer = require("nodemailer");
-
-
-var whitelist = ['http://localhost:3000', 'https://ksbackoffice.herokuapp.com/', 'https://www.f2i-cw22-ams.fr/', 'https://ks-frontend.herokuapp.com/']
-
-var options = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-
-/*var corsOptions = {
+var corsOptions = {
   origin: "http://localhost:3000"
-};*/
+};
 
 app.use(cookieParser());
-app.use(cors(options));
+app.use(cors(corsOptions));
 
 
 // parse requests of content-type - application/json
