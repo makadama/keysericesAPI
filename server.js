@@ -8,12 +8,26 @@ const cors = require("cors");
 
 const app = express();
 var nodemailer = require("nodemailer");
-var corsOptions = {
+
+
+var whitelist = ['http://localhost:3000', 'https://ksbackoffice.herokuapp.com/', 'https://www.f2i-cw22-ams.fr/', 'https://ks-frontend.herokuapp.com/']
+
+var options = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+/*var corsOptions = {
   origin: "http://localhost:3000"
-};
+};*/
 
 app.use(cookieParser());
-app.use(cors(corsOptions));
+app.use(cors(options));
 
 
 // parse requests of content-type - application/json
@@ -77,7 +91,7 @@ require('./app/routes/simulation.routes')(app);
 
 global.__basedir = __dirname;
 
-console.log("MY_VARIABLE: " + process.env.API_KEY);
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running.`);

@@ -91,7 +91,7 @@ exports.updateOne = (req, res) => {
         return res.status(404).send({ message: "Disponibilite introuvable." });
       }
       
-      disponibilite.update({
+      Disponibilite.update({
           date_debut: req.body.date_debut,
           date_fin: req.body.date_fin,
           fk_logement: req.body.logementId}, {where: { id: req.params.disponibiliteId}
