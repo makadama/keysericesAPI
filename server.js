@@ -8,9 +8,22 @@ const cors = require("cors");
 
 const app = express();
 var nodemailer = require("nodemailer");
-var corsOptions = {
-  origin: "http://localhost:3000"
-};
+
+const whitelist = ['http://localhost:3000', 'https://f2i-cw22-ams-backoffice.herokuapp.com/', 'https://www.f2i-cw22-ams.fr']
+const corsOptions = {
+  origin: function (origin, callback) {
+    console.log("** Origin of request " + origin)
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("Origin acceptable")
+      callback(null, true)
+    } else {
+      console.log("Origin rejected")
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+
 
 app.use(cookieParser());
 app.use(cors(corsOptions));
