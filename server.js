@@ -9,7 +9,7 @@ const cors = require("cors");
 const app = express();
 var nodemailer = require("nodemailer");
 
-const whitelist = ['http://localhost:3000', 'https://f2i-cw22-ams-backoffice.herokuapp.com/', 'https://www.f2i-cw22-ams.fr']
+const whitelist = ['http://localhost:3000', 'https://f2i-cw22-ams-backoffice.herokuapp.com', 'https://www.f2i-cw22-ams.fr']
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
