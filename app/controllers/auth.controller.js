@@ -366,7 +366,10 @@ exports.signupEmploye = (req, res) => {
 
 
 exports.signinEmploye = (req, res) => {
-  console.log("signin Employe2");
+  const { errors, isValid } = validateLoginInput(req.body);
+  if(!isValid){
+      return res.status(400).json(errors);
+  }   
   Employe.findOne({
     where: {
       email: req.body.email
