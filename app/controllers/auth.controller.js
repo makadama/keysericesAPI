@@ -421,8 +421,5 @@ exports.signinEmploye = (req, res) => {
 
 exports.signout = (req, res) =>{
  res.clearCookie("token");
- res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
- res.header('Expires', '-1');
- res.header('Pragma', 'no-cache');
  res.redirect('/connexion');
 }
