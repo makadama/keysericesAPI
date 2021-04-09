@@ -88,7 +88,7 @@ exports.updateOne = (req, res) => {
       
       commande_panier.update({
           date_commande: req.body.date_commande,
-          date_livree: req.body.date_livree,
+          /*date_livree: req.body.date_livree,*/
           fk_user : req.body.fk_user,
           fk_panier : req.body.fk_panier
       })
